@@ -127,7 +127,7 @@
                 <configuration>
                     <transformers>
                         <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                            <mainClass>io.onetable.utilities.RunSync</mainClass>
+                            <mainClass>org.apache.xtable.utilities.RunSync</mainClass>
                         </transformer>
                     </transformers>
                 </configuration>
