@@ -400,7 +400,8 @@ public class HudiTargetClient implements TargetClient {
     private int getNumInstantsToRetain() {
       String commitCutoff =
           HudiInstantUtils.convertInstantToCommit(
-              HudiInstantUtils.parseFromInstantTime(instantTime).minus(timelineRetentionInHours, ChronoUnit.HOURS));
+              HudiInstantUtils.parseFromInstantTime(instantTime)
+                  .minus(timelineRetentionInHours, ChronoUnit.HOURS));
       // count number of completed commits after the cutoff
       return metaClient
           .getActiveTimeline()
@@ -468,7 +469,8 @@ public class HudiTargetClient implements TargetClient {
       }
       // create a clean instant write after this latest commit
       String cleanTime =
-          HudiInstantUtils.convertInstantToCommit(HudiInstantUtils.parseFromInstantTime(instantTime).plus(1, ChronoUnit.SECONDS));
+          HudiInstantUtils.convertInstantToCommit(
+              HudiInstantUtils.parseFromInstantTime(instantTime).plus(1, ChronoUnit.SECONDS));
       // create a metadata table writer in order to mark files as deleted in the table
       // the deleted entries are cleaned up in the metadata table during compaction to control the
       // growth of the table

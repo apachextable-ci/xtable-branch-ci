@@ -23,7 +23,6 @@ import java.util.Iterator;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
-import io.onetable.model.*;
 import org.apache.xtable.model.CommitsBacklog;
 import org.apache.xtable.model.IncrementalTableChanges;
 import org.apache.xtable.model.InstantsForIncrementalSync;

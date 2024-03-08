@@ -34,8 +34,6 @@ import java.util.Map;
 import lombok.SneakyThrows;
 
 import org.apache.hadoop.conf.Configuration;
-import org.apache.xtable.model.OneSnapshot;
-import org.apache.xtable.model.schema.PartitionTransformType;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
@@ -50,8 +48,10 @@ import org.apache.xtable.client.PerTableConfig;
 import org.apache.xtable.client.PerTableConfigImpl;
 import org.apache.xtable.model.CommitsBacklog;
 import org.apache.xtable.model.InstantsForIncrementalSync;
+import org.apache.xtable.model.OneSnapshot;
 import org.apache.xtable.model.TableChange;
 import org.apache.xtable.model.schema.OnePartitionField;
+import org.apache.xtable.model.schema.PartitionTransformType;
 import org.apache.xtable.model.storage.TableFormat;
 
 public class ITIcebergSourceClient {

@@ -42,11 +42,6 @@ import org.apache.hadoop.conf.Configuration;
 import org.apache.spark.SparkConf;
 import org.apache.spark.api.java.JavaSparkContext;
 import org.apache.spark.sql.SparkSession;
-import org.apache.xtable.GenericTable;
-import org.apache.xtable.TestJavaHudiTable;
-import org.apache.xtable.TestSparkHudiTable;
-import org.apache.xtable.ValidationTestHelper;
-import org.apache.xtable.model.OneSnapshot;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -63,8 +58,13 @@ import org.apache.hudi.common.model.HoodieTableType;
 import org.apache.hudi.common.table.HoodieTableMetaClient;
 import org.apache.hudi.common.table.timeline.HoodieInstant;
 
+import org.apache.xtable.GenericTable;
+import org.apache.xtable.TestJavaHudiTable;
+import org.apache.xtable.TestSparkHudiTable;
+import org.apache.xtable.ValidationTestHelper;
 import org.apache.xtable.model.CommitsBacklog;
 import org.apache.xtable.model.InstantsForIncrementalSync;
+import org.apache.xtable.model.OneSnapshot;
 import org.apache.xtable.model.TableChange;
 
 /**
@@ -100,7 +100,8 @@ public class ITHudiSourceClient {
 
   @ParameterizedTest
   @MethodSource("testsForAllTableTypesAndPartitions")
-  public void insertAndUpsertData(HoodieTableType tableType, HudiTestUtil.PartitionConfig partitionConfig) {
+  public void insertAndUpsertData(
+      HoodieTableType tableType, HudiTestUtil.PartitionConfig partitionConfig) {
     String tableName = GenericTable.getTableName();
     try (TestJavaHudiTable table =
         TestJavaHudiTable.forStandardSchema(
@@ -137,7 +138,8 @@ public class ITHudiSourceClient {
               CONFIGURATION, table.getBasePath(), partitionConfig.getOneTableConfig());
       // Get the current snapshot
       OneSnapshot oneSnapshot = hudiClient.getCurrentSnapshot();
-      ValidationTestHelper.validateOneSnapshot(oneSnapshot, allBaseFilePaths.get(allBaseFilePaths.size() - 1));
+      ValidationTestHelper.validateOneSnapshot(
+          oneSnapshot, allBaseFilePaths.get(allBaseFilePaths.size() - 1));
       // Get second change in Incremental format.
       InstantsForIncrementalSync instantsForIncrementalSync =
           InstantsForIncrementalSync.builder()
@@ -184,7 +186,8 @@ public class ITHudiSourceClient {
               CONFIGURATION, table.getBasePath(), partitionConfig.getOneTableConfig());
       // Get the current snapshot
       OneSnapshot oneSnapshot = hudiClient.getCurrentSnapshot();
-      ValidationTestHelper.validateOneSnapshot(oneSnapshot, allBaseFilePaths.get(allBaseFilePaths.size() - 1));
+      ValidationTestHelper.validateOneSnapshot(
+          oneSnapshot, allBaseFilePaths.get(allBaseFilePaths.size() - 1));
       // Get second change in Incremental format.
       InstantsForIncrementalSync instantsForIncrementalSync =
           InstantsForIncrementalSync.builder()
@@ -271,7 +274,8 @@ public class ITHudiSourceClient {
           getHudiSourceClient(CONFIGURATION, table.getBasePath(), "level:VALUE");
       // Get the current snapshot
       OneSnapshot oneSnapshot = hudiClient.getCurrentSnapshot();
-      ValidationTestHelper.validateOneSnapshot(oneSnapshot, allBaseFilePaths.get(allBaseFilePaths.size() - 1));
+      ValidationTestHelper.validateOneSnapshot(
+          oneSnapshot, allBaseFilePaths.get(allBaseFilePaths.size() - 1));
       // Get changes in Incremental format.
       InstantsForIncrementalSync instantsForIncrementalSync =
           InstantsForIncrementalSync.builder()
@@ -322,7 +326,8 @@ public class ITHudiSourceClient {
           getHudiSourceClient(CONFIGURATION, table.getBasePath(), "level:VALUE");
       // Get the current snapshot
       OneSnapshot oneSnapshot = hudiClient.getCurrentSnapshot();
-      ValidationTestHelper.validateOneSnapshot(oneSnapshot, allBaseFilePaths.get(allBaseFilePaths.size() - 1));
+      ValidationTestHelper.validateOneSnapshot(
+          oneSnapshot, allBaseFilePaths.get(allBaseFilePaths.size() - 1));
       // Get changes in Incremental format.
       InstantsForIncrementalSync instantsForIncrementalSync =
           InstantsForIncrementalSync.builder()
@@ -340,7 +345,8 @@ public class ITHudiSourceClient {
 
   @ParameterizedTest
   @MethodSource("testsForAllTableTypesAndPartitions")
-  public void testsForClustering(HoodieTableType tableType, HudiTestUtil.PartitionConfig partitionConfig) {
+  public void testsForClustering(
+      HoodieTableType tableType, HudiTestUtil.PartitionConfig partitionConfig) {
     String tableName = "test_table_" + UUID.randomUUID();
     try (TestJavaHudiTable table =
         TestJavaHudiTable.forStandardSchema(
@@ -387,7 +393,8 @@ public class ITHudiSourceClient {
               CONFIGURATION, table.getBasePath(), partitionConfig.getOneTableConfig());
       // Get the current snapshot
       OneSnapshot oneSnapshot = hudiClient.getCurrentSnapshot();
-      ValidationTestHelper.validateOneSnapshot(oneSnapshot, allBaseFilePaths.get(allBaseFilePaths.size() - 1));
+      ValidationTestHelper.validateOneSnapshot(
+          oneSnapshot, allBaseFilePaths.get(allBaseFilePaths.size() - 1));
       // Get changes in Incremental format.
       InstantsForIncrementalSync instantsForIncrementalSync =
           InstantsForIncrementalSync.builder()
@@ -405,7 +412,8 @@ public class ITHudiSourceClient {
 
   @ParameterizedTest
   @MethodSource("testsForAllTableTypesAndPartitions")
-  public void testsForSavepointRestore(HoodieTableType tableType, HudiTestUtil.PartitionConfig partitionConfig) {
+  public void testsForSavepointRestore(
+      HoodieTableType tableType, HudiTestUtil.PartitionConfig partitionConfig) {
     String tableName = "test_table_" + UUID.randomUUID();
     try (TestJavaHudiTable table =
         TestJavaHudiTable.forStandardSchema(
@@ -440,7 +448,8 @@ public class ITHudiSourceClient {
               CONFIGURATION, table.getBasePath(), partitionConfig.getOneTableConfig());
       // Get the current snapshot
       OneSnapshot oneSnapshot = hudiClient.getCurrentSnapshot();
-      ValidationTestHelper.validateOneSnapshot(oneSnapshot, allBaseFilePaths.get(allBaseFilePaths.size() - 1));
+      ValidationTestHelper.validateOneSnapshot(
+          oneSnapshot, allBaseFilePaths.get(allBaseFilePaths.size() - 1));
       // Get changes in Incremental format.
       InstantsForIncrementalSync instantsForIncrementalSync =
           InstantsForIncrementalSync.builder()
@@ -470,7 +479,8 @@ public class ITHudiSourceClient {
 
   @ParameterizedTest
   @MethodSource("testsForAllTableTypesAndPartitions")
-  public void testsForRollbacks(HoodieTableType tableType, HudiTestUtil.PartitionConfig partitionConfig) {
+  public void testsForRollbacks(
+      HoodieTableType tableType, HudiTestUtil.PartitionConfig partitionConfig) {
     String tableName = "test_table_" + UUID.randomUUID();
     try (TestJavaHudiTable table =
         TestJavaHudiTable.forStandardSchema(
@@ -515,11 +525,14 @@ public class ITHudiSourceClient {
       for (HoodieInstant instant : instantCommitsBacklog.getCommitsToProcess()) {
         TableChange tableChange = hudiClient.getTableChangeForCommit(instant);
         if (commitInstant2.equals(instant.getTimestamp())) {
-          ValidationTestHelper.validateTableChange(baseFilesAfterCommit1, baseFilesAfterCommit2, tableChange);
+          ValidationTestHelper.validateTableChange(
+              baseFilesAfterCommit1, baseFilesAfterCommit2, tableChange);
         } else if ("rollback".equals(instant.getAction())) {
-          ValidationTestHelper.validateTableChange(baseFilesAfterCommit3, baseFilesAfterRollback, tableChange);
+          ValidationTestHelper.validateTableChange(
+              baseFilesAfterCommit3, baseFilesAfterRollback, tableChange);
         } else if (commitInstant4.equals(instant.getTimestamp())) {
-          ValidationTestHelper.validateTableChange(baseFilesAfterRollback, baseFilesAfterCommit4, tableChange);
+          ValidationTestHelper.validateTableChange(
+              baseFilesAfterRollback, baseFilesAfterCommit4, tableChange);
         } else {
           fail("Please add proper asserts here");
         }
@@ -534,8 +547,10 @@ public class ITHudiSourceClient {
 
   private static Stream<Arguments> testsForAllTableTypesAndPartitions() {
     HudiTestUtil.PartitionConfig unPartitionedConfig = HudiTestUtil.PartitionConfig.of(null, null);
-    HudiTestUtil.PartitionConfig partitionedConfig = HudiTestUtil.PartitionConfig.of("level:SIMPLE", "level:VALUE");
-    List<HudiTestUtil.PartitionConfig> partitionConfigs = Arrays.asList(unPartitionedConfig, partitionedConfig);
+    HudiTestUtil.PartitionConfig partitionedConfig =
+        HudiTestUtil.PartitionConfig.of("level:SIMPLE", "level:VALUE");
+    List<HudiTestUtil.PartitionConfig> partitionConfigs =
+        Arrays.asList(unPartitionedConfig, partitionedConfig);
     List<HoodieTableType> tableTypes =
         Arrays.asList(HoodieTableType.COPY_ON_WRITE, HoodieTableType.MERGE_ON_READ);
 

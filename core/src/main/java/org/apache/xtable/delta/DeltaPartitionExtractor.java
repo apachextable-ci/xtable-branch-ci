@@ -45,15 +45,15 @@ import org.apache.spark.sql.types.Metadata;
 import org.apache.spark.sql.types.StructField;
 import org.apache.spark.sql.types.StructType;
 
-import org.apache.xtable.model.schema.OnePartitionField;
-import org.apache.xtable.model.schema.OneSchema;
-import org.apache.xtable.model.schema.PartitionTransformType;
 import scala.collection.JavaConverters;
 
 import com.google.common.collect.Iterators;
 import com.google.common.collect.PeekingIterator;
 
 import org.apache.xtable.exception.PartitionSpecException;
+import org.apache.xtable.model.schema.OnePartitionField;
+import org.apache.xtable.model.schema.OneSchema;
+import org.apache.xtable.model.schema.PartitionTransformType;
 import org.apache.xtable.model.stat.PartitionValue;
 import org.apache.xtable.model.stat.Range;
 import org.apache.xtable.model.storage.OneDataFile;

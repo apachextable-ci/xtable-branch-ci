@@ -36,12 +36,12 @@ import org.apache.spark.sql.types.Metadata;
 import org.apache.spark.sql.types.StructField;
 import org.apache.spark.sql.types.StructType;
 
+import org.apache.xtable.collectors.CustomCollectors;
 import org.apache.xtable.exception.NotSupportedException;
 import org.apache.xtable.exception.SchemaExtractorException;
 import org.apache.xtable.model.schema.OneField;
 import org.apache.xtable.model.schema.OneSchema;
 import org.apache.xtable.model.schema.OneType;
-import org.apache.xtable.collectors.CustomCollectors;
 import org.apache.xtable.schema.SchemaUtils;
 
 /**
@@ -187,7 +187,11 @@ public class DeltaSchemaExtractor {
         StructType structType = (StructType) dataType;
         fields =
             Arrays.stream(structType.fields())
-                .filter(field -> !field.metadata().contains(DeltaPartitionExtractor.DELTA_GENERATION_EXPRESSION))
+                .filter(
+                    field ->
+                        !field
+                            .metadata()
+                            .contains(DeltaPartitionExtractor.DELTA_GENERATION_EXPRESSION))
                 .map(
                     field -> {
                       Integer fieldId =
@@ -226,7 +230,8 @@ public class DeltaSchemaExtractor {
         OneSchema elementSchema =
             toOneSchema(
                 arrayType.elementType(),
-                SchemaUtils.getFullyQualifiedPath(parentPath, OneField.Constants.ARRAY_ELEMENT_FIELD_NAME),
+                SchemaUtils.getFullyQualifiedPath(
+                    parentPath, OneField.Constants.ARRAY_ELEMENT_FIELD_NAME),
                 arrayType.containsNull(),
                 null);
         OneField elementField =
@@ -243,7 +248,8 @@ public class DeltaSchemaExtractor {
         OneSchema keySchema =
             toOneSchema(
                 mapType.keyType(),
-                SchemaUtils.getFullyQualifiedPath(parentPath, OneField.Constants.MAP_VALUE_FIELD_NAME),
+                SchemaUtils.getFullyQualifiedPath(
+                    parentPath, OneField.Constants.MAP_VALUE_FIELD_NAME),
                 false,
                 null);
         OneField keyField =
@@ -255,7 +261,8 @@ public class DeltaSchemaExtractor {
         OneSchema valueSchema =
             toOneSchema(
                 mapType.valueType(),
-                SchemaUtils.getFullyQualifiedPath(parentPath, OneField.Constants.MAP_VALUE_FIELD_NAME),
+                SchemaUtils.getFullyQualifiedPath(
+                    parentPath, OneField.Constants.MAP_VALUE_FIELD_NAME),
                 mapType.valueContainsNull(),
                 null);
         OneField valueField =

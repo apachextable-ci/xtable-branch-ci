@@ -39,6 +39,17 @@ import org.apache.hadoop.conf.Configuration;
 import org.apache.spark.serializer.KryoSerializer;
 import org.apache.spark.sql.Row;
 import org.apache.spark.sql.SparkSession;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.io.TempDir;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
 import org.apache.xtable.GenericTable;
 import org.apache.xtable.TestSparkDeltaTable;
 import org.apache.xtable.ValidationTestHelper;
@@ -64,18 +75,6 @@ import org.apache.xtable.model.storage.FileFormat;
 import org.apache.xtable.model.storage.OneDataFile;
 import org.apache.xtable.model.storage.OneFileGroup;
 import org.apache.xtable.model.storage.TableFormat;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.io.TempDir;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.MethodSource;
-
-import io.onetable.model.*;
 
 public class ITDeltaSourceClient {
 
@@ -361,7 +360,8 @@ public class ITDeltaSourceClient {
     if (isPartitioned) {
       validateDeltaPartitioning(oneSnapshot);
     }
-    ValidationTestHelper.validateOneSnapshot(oneSnapshot, allActiveFiles.get(allActiveFiles.size() - 1));
+    ValidationTestHelper.validateOneSnapshot(
+        oneSnapshot, allActiveFiles.get(allActiveFiles.size() - 1));
     // Get changes in incremental format.
     InstantsForIncrementalSync instantsForIncrementalSync =
         InstantsForIncrementalSync.builder()
@@ -465,7 +465,8 @@ public class ITDeltaSourceClient {
     if (isPartitioned) {
       validateDeltaPartitioning(oneSnapshot);
     }
-    ValidationTestHelper.validateOneSnapshot(oneSnapshot, allActiveFiles.get(allActiveFiles.size() - 1));
+    ValidationTestHelper.validateOneSnapshot(
+        oneSnapshot, allActiveFiles.get(allActiveFiles.size() - 1));
     // Get changes in incremental format.
     InstantsForIncrementalSync instantsForIncrementalSync =
         InstantsForIncrementalSync.builder()
@@ -511,7 +512,8 @@ public class ITDeltaSourceClient {
     if (isPartitioned) {
       validateDeltaPartitioning(oneSnapshot);
     }
-    ValidationTestHelper.validateOneSnapshot(oneSnapshot, allActiveFiles.get(allActiveFiles.size() - 1));
+    ValidationTestHelper.validateOneSnapshot(
+        oneSnapshot, allActiveFiles.get(allActiveFiles.size() - 1));
     // Get changes in incremental format.
     InstantsForIncrementalSync instantsForIncrementalSync =
         InstantsForIncrementalSync.builder()
@@ -566,7 +568,8 @@ public class ITDeltaSourceClient {
     OneSnapshot oneSnapshot = deltaSourceClient.getCurrentSnapshot();
 
     validateDeltaPartitioning(oneSnapshot);
-    ValidationTestHelper.validateOneSnapshot(oneSnapshot, allActiveFiles.get(allActiveFiles.size() - 1));
+    ValidationTestHelper.validateOneSnapshot(
+        oneSnapshot, allActiveFiles.get(allActiveFiles.size() - 1));
     // Get changes in incremental format.
     InstantsForIncrementalSync instantsForIncrementalSync =
         InstantsForIncrementalSync.builder()
@@ -624,7 +627,8 @@ public class ITDeltaSourceClient {
     if (isPartitioned) {
       validateDeltaPartitioning(oneSnapshot);
     }
-    ValidationTestHelper.validateOneSnapshot(oneSnapshot, allActiveFiles.get(allActiveFiles.size() - 1));
+    ValidationTestHelper.validateOneSnapshot(
+        oneSnapshot, allActiveFiles.get(allActiveFiles.size() - 1));
     // Get changes in incremental format.
     InstantsForIncrementalSync instantsForIncrementalSync =
         InstantsForIncrementalSync.builder()

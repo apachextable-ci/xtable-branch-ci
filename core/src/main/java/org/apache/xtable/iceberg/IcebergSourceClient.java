@@ -38,9 +38,10 @@ import org.apache.iceberg.io.FileIO;
 
 import org.apache.xtable.client.PerTableConfig;
 import org.apache.xtable.exception.OneIOException;
-import io.onetable.model.*;
 import org.apache.xtable.model.CommitsBacklog;
 import org.apache.xtable.model.InstantsForIncrementalSync;
+import org.apache.xtable.model.OneSnapshot;
+import org.apache.xtable.model.OneTable;
 import org.apache.xtable.model.TableChange;
 import org.apache.xtable.model.schema.OnePartitionField;
 import org.apache.xtable.model.schema.OneSchema;
@@ -53,8 +54,6 @@ import org.apache.xtable.model.storage.OneDataFilesDiff;
 import org.apache.xtable.model.storage.OneFileGroup;
 import org.apache.xtable.model.storage.TableFormat;
 import org.apache.xtable.spi.extractor.SourceClient;
-import org.apache.xtable.model.OneSnapshot;
-import org.apache.xtable.model.OneTable;
 
 @Log4j2
 @Builder

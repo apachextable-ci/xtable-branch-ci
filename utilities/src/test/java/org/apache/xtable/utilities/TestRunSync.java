@@ -86,13 +86,13 @@ class TestRunSync {
     Assertions.assertNotNull(tfClients.get(ICEBERG));
 
     Assertions.assertEquals(
-        "hudi.org.apache.xtable.HudiSourceClientProvider",
+        "org.apache.xtable.hudi.HudiSourceClientProvider",
         tfClients.get(HUDI).getSourceClientProviderClass());
     Assertions.assertEquals(
-        "io.onetable.iceberg.IcebergTargetClient",
+        "org.apache.xtable.iceberg.IcebergTargetClient",
         tfClients.get(ICEBERG).getTargetClientProviderClass());
     Assertions.assertEquals(
-        "iceberg.org.apache.xtable.IcebergSourceClientProvider",
+        "org.apache.xtable.iceberg.IcebergSourceClientProvider",
         tfClients.get(ICEBERG).getSourceClientProviderClass());
   }
 
@@ -126,13 +126,13 @@ class TestRunSync {
   @Test
   public void testIcebergCatalogConfig() throws IOException {
     String icebergConfig =
-        "catalogImpl: io.onetable.CatalogImpl\n"
+        "catalogImpl: org.apache.xtable.CatalogImpl\n"
             + "catalogName: test\n"
             + "catalogOptions: \n"
             + "  option1: value1\n"
             + "  option2: value2";
     IcebergCatalogConfig catalogConfig = RunSync.loadIcebergCatalogConfig(icebergConfig.getBytes());
-    Assertions.assertEquals("io.onetable.CatalogImpl", catalogConfig.getCatalogImpl());
+    Assertions.assertEquals("org.apache.xtable.CatalogImpl", catalogConfig.getCatalogImpl());
     Assertions.assertEquals("test", catalogConfig.getCatalogName());
     Assertions.assertEquals(2, catalogConfig.getCatalogOptions().size());
     Assertions.assertEquals("value1", catalogConfig.getCatalogOptions().get("option1"));

@@ -30,10 +30,6 @@ import java.util.UUID;
 import java.util.stream.Stream;
 
 import org.apache.hadoop.conf.Configuration;
-import org.apache.xtable.model.OneTable;
-import org.apache.xtable.model.schema.OnePartitionField;
-import org.apache.xtable.model.schema.OneSchema;
-import org.apache.xtable.model.schema.PartitionTransformType;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -42,7 +38,11 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import org.apache.hudi.common.table.HoodieTableMetaClient;
 
+import org.apache.xtable.model.OneTable;
 import org.apache.xtable.model.schema.OneField;
+import org.apache.xtable.model.schema.OnePartitionField;
+import org.apache.xtable.model.schema.OneSchema;
+import org.apache.xtable.model.schema.PartitionTransformType;
 import org.apache.xtable.model.storage.DataLayoutStrategy;
 import org.apache.xtable.model.storage.TableFormat;
 

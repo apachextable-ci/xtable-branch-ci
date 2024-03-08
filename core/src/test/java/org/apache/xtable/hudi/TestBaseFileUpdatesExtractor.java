@@ -35,11 +35,6 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 
 import org.apache.hadoop.conf.Configuration;
-import org.apache.xtable.model.schema.OnePartitionField;
-import org.apache.xtable.model.schema.OneSchema;
-import org.apache.xtable.model.schema.PartitionTransformType;
-import org.apache.xtable.model.storage.FileFormat;
-import org.apache.xtable.testutil.ColumnStatMapUtil;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
@@ -58,13 +53,18 @@ import org.apache.hudi.config.HoodieWriteConfig;
 import org.apache.hudi.hadoop.CachingPath;
 
 import org.apache.xtable.model.schema.OneField;
+import org.apache.xtable.model.schema.OnePartitionField;
+import org.apache.xtable.model.schema.OneSchema;
 import org.apache.xtable.model.schema.OneType;
+import org.apache.xtable.model.schema.PartitionTransformType;
 import org.apache.xtable.model.stat.ColumnStat;
 import org.apache.xtable.model.stat.PartitionValue;
 import org.apache.xtable.model.stat.Range;
+import org.apache.xtable.model.storage.FileFormat;
 import org.apache.xtable.model.storage.OneDataFile;
 import org.apache.xtable.model.storage.OneDataFilesDiff;
 import org.apache.xtable.model.storage.OneFileGroup;
+import org.apache.xtable.testutil.ColumnStatMapUtil;
 
 public class TestBaseFileUpdatesExtractor {
   @TempDir public static java.nio.file.Path tempDir;
@@ -412,8 +412,7 @@ public class TestBaseFileUpdatesExtractor {
    * Get expected col stats for a file.
    *
    * @param fileName name of the file
-   * @return stats matching the column stats in {@link
-   *     ColumnStatMapUtil#getColumnStats()}
+   * @return stats matching the column stats in {@link ColumnStatMapUtil#getColumnStats()}
    */
   private Map<String, HoodieColumnRangeMetadata<Comparable>> getExpectedColumnStats(
       String fileName) {

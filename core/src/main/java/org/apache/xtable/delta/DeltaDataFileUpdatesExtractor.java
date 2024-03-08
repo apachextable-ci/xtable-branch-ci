@@ -31,18 +31,18 @@ import org.apache.spark.sql.delta.Snapshot;
 import org.apache.spark.sql.delta.actions.Action;
 import org.apache.spark.sql.delta.actions.AddFile;
 
-import org.apache.xtable.collectors.CustomCollectors;
-import org.apache.xtable.model.schema.OneSchema;
-import org.apache.xtable.model.stat.ColumnStat;
-import org.apache.xtable.model.storage.DataFilesDiff;
-import org.apache.xtable.model.storage.OneDataFilesDiff;
-import org.apache.xtable.model.storage.OneFileGroup;
 import scala.collection.JavaConverters;
 import scala.collection.Seq;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
+import org.apache.xtable.collectors.CustomCollectors;
+import org.apache.xtable.model.schema.OneSchema;
+import org.apache.xtable.model.stat.ColumnStat;
+import org.apache.xtable.model.storage.DataFilesDiff;
 import org.apache.xtable.model.storage.OneDataFile;
+import org.apache.xtable.model.storage.OneDataFilesDiff;
+import org.apache.xtable.model.storage.OneFileGroup;
 import org.apache.xtable.paths.PathUtils;
 
 @Builder
@@ -99,7 +99,8 @@ public class DeltaDataFileUpdatesExtractor {
             .flatMap(dFile -> createAddFileAction(dFile, tableSchema, tableBasePath));
     int totalActions = filesAdded.size() + removeFileActions.size();
     List<Action> allActions =
-        Stream.concat(addActions, removeFileActions.stream()).collect(CustomCollectors.toList(totalActions));
+        Stream.concat(addActions, removeFileActions.stream())
+            .collect(CustomCollectors.toList(totalActions));
     return JavaConverters.asScalaBuffer(allActions).toSeq();
   }
 

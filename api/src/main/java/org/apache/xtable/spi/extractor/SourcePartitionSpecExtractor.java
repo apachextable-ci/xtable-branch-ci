@@ -25,7 +25,7 @@ import org.apache.xtable.model.schema.OneSchema;
 
 /**
  * Interface to implement to extract partition fields from given canonical schema. Refer @see
- * io.onetable.onetable.hudi.ConfigurationBasedPartitionSpecExtractor for an example implementation.
+ * org.apache.xtable.hudi.ConfigurationBasedPartitionSpecExtractor for an example implementation.
  */
 public interface SourcePartitionSpecExtractor {
   List<OnePartitionField> spec(OneSchema tableSchema);

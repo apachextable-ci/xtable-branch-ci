@@ -31,20 +31,11 @@ import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 import org.apache.hadoop.conf.Configuration;
-import org.apache.xtable.model.CommitsBacklog;
-import org.apache.xtable.model.InstantsForIncrementalSync;
-import org.apache.xtable.model.OneSnapshot;
-import org.apache.xtable.model.OneTable;
-import org.apache.xtable.model.TableChange;
-import org.apache.xtable.model.schema.OneField;
-import org.apache.xtable.model.schema.OneSchema;
-import org.apache.xtable.model.schema.PartitionTransformType;
-import org.apache.xtable.model.schema.SchemaCatalog;
-import org.apache.xtable.model.schema.SchemaVersion;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
+import org.mockito.Mockito;
 
 import org.apache.iceberg.*;
 import org.apache.iceberg.data.GenericRecord;
@@ -57,15 +48,22 @@ import org.apache.iceberg.types.Types;
 
 import org.apache.xtable.client.PerTableConfig;
 import org.apache.xtable.client.PerTableConfigImpl;
-import io.onetable.model.*;
-import io.onetable.model.schema.*;
+import org.apache.xtable.model.CommitsBacklog;
+import org.apache.xtable.model.InstantsForIncrementalSync;
+import org.apache.xtable.model.OneSnapshot;
+import org.apache.xtable.model.OneTable;
+import org.apache.xtable.model.TableChange;
+import org.apache.xtable.model.schema.OneField;
+import org.apache.xtable.model.schema.OneSchema;
+import org.apache.xtable.model.schema.PartitionTransformType;
+import org.apache.xtable.model.schema.SchemaCatalog;
+import org.apache.xtable.model.schema.SchemaVersion;
 import org.apache.xtable.model.stat.PartitionValue;
 import org.apache.xtable.model.storage.DataLayoutStrategy;
 import org.apache.xtable.model.storage.FileFormat;
 import org.apache.xtable.model.storage.OneDataFile;
 import org.apache.xtable.model.storage.OneFileGroup;
 import org.apache.xtable.model.storage.TableFormat;
-import org.mockito.Mockito;
 
 class TestIcebergSourceClient {
 

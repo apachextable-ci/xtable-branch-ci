@@ -34,10 +34,10 @@ import org.apache.iceberg.types.Conversions;
 import org.apache.iceberg.types.Type;
 import org.apache.iceberg.types.Types;
 
+import org.apache.xtable.collectors.CustomCollectors;
 import org.apache.xtable.model.schema.OneField;
 import org.apache.xtable.model.stat.ColumnStat;
 import org.apache.xtable.model.stat.Range;
-import org.apache.xtable.collectors.CustomCollectors;
 
 /** Column stats extractor for iceberg table format. */
 @NoArgsConstructor(access = AccessLevel.PRIVATE)

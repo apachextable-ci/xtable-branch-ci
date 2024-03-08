@@ -26,11 +26,11 @@ import lombok.Builder;
 import org.apache.spark.sql.delta.DeltaLog;
 import org.apache.spark.sql.delta.Snapshot;
 
+import scala.Option;
+
 import org.apache.xtable.model.OneTable;
 import org.apache.xtable.model.schema.OnePartitionField;
 import org.apache.xtable.model.schema.OneSchema;
-import scala.Option;
-
 import org.apache.xtable.model.storage.DataLayoutStrategy;
 import org.apache.xtable.model.storage.TableFormat;
 

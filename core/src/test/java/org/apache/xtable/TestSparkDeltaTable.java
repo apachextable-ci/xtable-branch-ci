@@ -81,7 +81,8 @@ public class TestSparkDeltaTable implements GenericTable<Row, Object>, Closeable
       this.sparkSession = sparkSession;
       this.partitionField = partitionField;
       this.includeAdditionalColumns = includeAdditionalColumns;
-      this.testDeltaHelper = TestDeltaHelper.createTestDataHelper(partitionField, includeAdditionalColumns);
+      this.testDeltaHelper =
+          TestDeltaHelper.createTestDataHelper(partitionField, includeAdditionalColumns);
       testDeltaHelper.createTable(sparkSession, tableName, basePath);
       this.deltaLog = DeltaLog.forTable(sparkSession, basePath);
       this.deltaTable = DeltaTable.forPath(sparkSession, basePath);

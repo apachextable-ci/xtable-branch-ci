@@ -105,7 +105,8 @@ public class IcebergDataFileUpdatesSync {
     return builder.build();
   }
 
-  private static FileFormat convertFileFormat(org.apache.xtable.model.storage.FileFormat fileFormat) {
+  private static FileFormat convertFileFormat(
+      org.apache.xtable.model.storage.FileFormat fileFormat) {
     switch (fileFormat) {
       case APACHE_PARQUET:
         return FileFormat.PARQUET;

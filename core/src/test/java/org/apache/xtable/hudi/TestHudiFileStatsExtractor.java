@@ -49,10 +49,6 @@ import org.apache.hadoop.conf.Configuration;
 import org.apache.parquet.avro.AvroParquetWriter;
 import org.apache.parquet.hadoop.ParquetWriter;
 import org.apache.parquet.hadoop.util.HadoopOutputFile;
-import org.apache.xtable.GenericTable;
-import org.apache.xtable.TestJavaHudiTable;
-import org.apache.xtable.model.schema.OneSchema;
-import org.apache.xtable.model.storage.FileFormat;
 import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
@@ -68,10 +64,14 @@ import org.apache.hudi.common.table.HoodieTableMetaClient;
 import org.apache.hudi.common.util.Option;
 import org.apache.hudi.metadata.HoodieTableMetadata;
 
+import org.apache.xtable.GenericTable;
+import org.apache.xtable.TestJavaHudiTable;
 import org.apache.xtable.model.schema.OneField;
+import org.apache.xtable.model.schema.OneSchema;
 import org.apache.xtable.model.schema.OneType;
 import org.apache.xtable.model.schema.SchemaVersion;
 import org.apache.xtable.model.stat.ColumnStat;
+import org.apache.xtable.model.storage.FileFormat;
 import org.apache.xtable.model.storage.OneDataFile;
 
 public class TestHudiFileStatsExtractor {

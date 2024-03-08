@@ -40,6 +40,10 @@ import org.apache.spark.sql.delta.actions.Action;
 import org.apache.spark.sql.delta.actions.AddFile;
 import org.apache.spark.sql.delta.actions.RemoveFile;
 
+import scala.Option;
+
+import io.delta.tables.DeltaTable;
+
 import org.apache.xtable.exception.OneIOException;
 import org.apache.xtable.model.CommitsBacklog;
 import org.apache.xtable.model.InstantsForIncrementalSync;
@@ -50,14 +54,9 @@ import org.apache.xtable.model.schema.OneSchema;
 import org.apache.xtable.model.schema.SchemaCatalog;
 import org.apache.xtable.model.schema.SchemaVersion;
 import org.apache.xtable.model.storage.FileFormat;
+import org.apache.xtable.model.storage.OneDataFile;
 import org.apache.xtable.model.storage.OneDataFilesDiff;
 import org.apache.xtable.model.storage.OneFileGroup;
-import scala.Option;
-
-import io.delta.tables.DeltaTable;
-
-import io.onetable.model.*;
-import org.apache.xtable.model.storage.OneDataFile;
 import org.apache.xtable.spi.extractor.DataFileIterator;
 import org.apache.xtable.spi.extractor.SourceClient;
 

@@ -40,14 +40,14 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import org.apache.hadoop.conf.Configuration;
-import org.apache.xtable.model.OneSnapshot;
-import org.apache.xtable.model.OneTable;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentMatcher;
 
 import org.apache.xtable.model.CommitsBacklog;
 import org.apache.xtable.model.IncrementalTableChanges;
 import org.apache.xtable.model.InstantsForIncrementalSync;
+import org.apache.xtable.model.OneSnapshot;
+import org.apache.xtable.model.OneTable;
 import org.apache.xtable.model.OneTableMetadata;
 import org.apache.xtable.model.TableChange;
 import org.apache.xtable.model.storage.TableFormat;

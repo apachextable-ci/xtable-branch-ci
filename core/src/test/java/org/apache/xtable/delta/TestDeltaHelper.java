@@ -63,6 +63,7 @@ import org.apache.spark.sql.types.StructType;
 
 import io.delta.tables.DeltaTable;
 import io.delta.tables.DeltaTableBuilder;
+
 import org.apache.xtable.GenericTable;
 
 @Builder
@@ -164,7 +165,8 @@ public class TestDeltaHelper {
 
   public Row generateRandomRow() {
     int year = 2013 + RANDOM.nextInt(11);
-    String levelValue = GenericTable.LEVEL_VALUES.get(RANDOM.nextInt(GenericTable.LEVEL_VALUES.size()));
+    String levelValue =
+        GenericTable.LEVEL_VALUES.get(RANDOM.nextInt(GenericTable.LEVEL_VALUES.size()));
     return generateRandomRowForGivenYearAndLevel(year, levelValue);
   }
 

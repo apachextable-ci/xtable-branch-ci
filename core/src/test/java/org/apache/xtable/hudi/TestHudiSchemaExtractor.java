@@ -25,10 +25,10 @@ import static org.mockito.Mockito.when;
 
 import org.apache.avro.Schema;
 import org.apache.avro.SchemaBuilder;
-import org.apache.xtable.model.schema.OneSchema;
 import org.junit.jupiter.api.Test;
 
 import org.apache.xtable.avro.AvroSchemaConverter;
+import org.apache.xtable.model.schema.OneSchema;
 
 public class TestHudiSchemaExtractor {
 

@@ -37,17 +37,17 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.xtable.model.OneSnapshot;
-import org.apache.xtable.model.OneTable;
-import org.apache.xtable.model.schema.OnePartitionField;
-import org.apache.xtable.model.schema.OneSchema;
-import org.apache.xtable.model.schema.PartitionTransformType;
 import org.junit.jupiter.api.Test;
 
 import org.apache.xtable.model.IncrementalTableChanges;
+import org.apache.xtable.model.OneSnapshot;
+import org.apache.xtable.model.OneTable;
 import org.apache.xtable.model.OneTableMetadata;
 import org.apache.xtable.model.TableChange;
 import org.apache.xtable.model.schema.OneField;
+import org.apache.xtable.model.schema.OnePartitionField;
+import org.apache.xtable.model.schema.OneSchema;
+import org.apache.xtable.model.schema.PartitionTransformType;
 import org.apache.xtable.model.storage.OneDataFile;
 import org.apache.xtable.model.storage.OneDataFilesDiff;
 import org.apache.xtable.model.storage.OneFileGroup;

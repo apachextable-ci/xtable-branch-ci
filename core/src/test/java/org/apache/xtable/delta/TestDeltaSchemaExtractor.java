@@ -26,11 +26,11 @@ import java.util.Map;
 import org.apache.spark.sql.types.DataTypes;
 import org.apache.spark.sql.types.Metadata;
 import org.apache.spark.sql.types.StructType;
-import org.apache.xtable.model.schema.OneSchema;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import org.apache.xtable.model.schema.OneField;
+import org.apache.xtable.model.schema.OneSchema;
 import org.apache.xtable.model.schema.OneType;
 
 public class TestDeltaSchemaExtractor {

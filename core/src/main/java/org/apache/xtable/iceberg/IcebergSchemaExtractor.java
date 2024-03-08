@@ -39,12 +39,12 @@ import org.apache.iceberg.Schema;
 import org.apache.iceberg.types.Type;
 import org.apache.iceberg.types.Types;
 
+import org.apache.xtable.collectors.CustomCollectors;
 import org.apache.xtable.exception.NotSupportedException;
 import org.apache.xtable.exception.SchemaExtractorException;
 import org.apache.xtable.model.schema.OneField;
 import org.apache.xtable.model.schema.OneSchema;
 import org.apache.xtable.model.schema.OneType;
-import org.apache.xtable.collectors.CustomCollectors;
 
 /**
  * Schema extractor for Iceberg which converts canonical representation of the schema{@link

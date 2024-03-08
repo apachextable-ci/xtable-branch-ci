@@ -24,6 +24,7 @@ import java.util.Map;
 import lombok.Builder;
 import lombok.NonNull;
 import lombok.Value;
+
 import org.apache.xtable.client.CatalogConfig;
 
 @Value

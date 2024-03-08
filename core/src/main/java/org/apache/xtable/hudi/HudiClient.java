@@ -42,16 +42,15 @@ import org.apache.hudi.common.util.Option;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.PeekingIterator;
 
-import org.apache.xtable.exception.OneIOException;
-import io.onetable.model.*;
-import org.apache.xtable.model.CommitsBacklog;
-import org.apache.xtable.model.schema.SchemaCatalog;
-import org.apache.xtable.spi.extractor.SourceClient;
 import org.apache.xtable.collectors.CustomCollectors;
+import org.apache.xtable.exception.OneIOException;
+import org.apache.xtable.model.CommitsBacklog;
 import org.apache.xtable.model.InstantsForIncrementalSync;
 import org.apache.xtable.model.OneSnapshot;
 import org.apache.xtable.model.OneTable;
 import org.apache.xtable.model.TableChange;
+import org.apache.xtable.model.schema.SchemaCatalog;
+import org.apache.xtable.spi.extractor.SourceClient;
 
 public class HudiClient implements SourceClient<HoodieInstant> {
 
@@ -105,7 +104,9 @@ public class HudiClient implements SourceClient<HoodieInstant> {
         .partitionedDataFiles(dataFileExtractor.getFilesCurrentState(table))
         .pendingCommits(
             pendingInstants.stream()
-                .map(hoodieInstant -> HudiInstantUtils.parseFromInstantTime(hoodieInstant.getTimestamp()))
+                .map(
+                    hoodieInstant ->
+                        HudiInstantUtils.parseFromInstantTime(hoodieInstant.getTimestamp()))
                 .collect(CustomCollectors.toList(pendingInstants.size())))
         .build();
   }
@@ -184,7 +185,9 @@ public class HudiClient implements SourceClient<HoodieInstant> {
     List<Instant> lastPendingHoodieInstantsStillPending =
         lastPendingHoodieInstants.stream()
             .filter(hoodieInstant -> hoodieInstant.isInflight() || hoodieInstant.isRequested())
-            .map(hoodieInstant -> HudiInstantUtils.parseFromInstantTime(hoodieInstant.getTimestamp()))
+            .map(
+                hoodieInstant ->
+                    HudiInstantUtils.parseFromInstantTime(hoodieInstant.getTimestamp()))
             .collect(Collectors.toList());
     return CommitsPair.builder()
         .completedCommits(lastPendingHoodieInstantsCompleted)
@@ -217,7 +220,9 @@ public class HudiClient implements SourceClient<HoodieInstant> {
                 hoodieInstant ->
                     hoodieInstant.compareTo(completedInstants.get(completedInstants.size() - 1))
                         <= 0)
-            .map(hoodieInstant -> HudiInstantUtils.parseFromInstantTime(hoodieInstant.getTimestamp()))
+            .map(
+                hoodieInstant ->
+                    HudiInstantUtils.parseFromInstantTime(hoodieInstant.getTimestamp()))
             .collect(Collectors.toList());
     return CommitsPair.builder()
         .completedCommits(completedInstants)
@@ -243,7 +248,8 @@ public class HudiClient implements SourceClient<HoodieInstant> {
             .filter(instant -> !HoodieTimeline.SAVEPOINT_ACTION.equals(instant.getAction()))
             .collect(
                 Collectors.toMap(
-                    hoodieInstant -> HudiInstantUtils.parseFromInstantTime(hoodieInstant.getTimestamp()),
+                    hoodieInstant ->
+                        HudiInstantUtils.parseFromInstantTime(hoodieInstant.getTimestamp()),
                     hoodieInstant -> hoodieInstant));
     return instants.stream()
         .map(instantHoodieInstantMap::get)

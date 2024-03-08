@@ -47,9 +47,6 @@ import org.apache.spark.sql.delta.actions.Format;
 import org.apache.spark.sql.delta.actions.Metadata;
 import org.apache.spark.sql.delta.actions.RemoveFile;
 
-import org.apache.xtable.model.OneTable;
-import org.apache.xtable.model.schema.OnePartitionField;
-import org.apache.xtable.model.schema.OneSchema;
 import scala.Option;
 import scala.Some;
 import scala.collection.JavaConverters;
@@ -59,7 +56,10 @@ import com.google.common.annotations.VisibleForTesting;
 
 import org.apache.xtable.client.PerTableConfig;
 import org.apache.xtable.exception.NotSupportedException;
+import org.apache.xtable.model.OneTable;
 import org.apache.xtable.model.OneTableMetadata;
+import org.apache.xtable.model.schema.OnePartitionField;
+import org.apache.xtable.model.schema.OneSchema;
 import org.apache.xtable.model.storage.OneDataFilesDiff;
 import org.apache.xtable.model.storage.OneFileGroup;
 import org.apache.xtable.model.storage.TableFormat;

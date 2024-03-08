@@ -33,16 +33,15 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
+import org.junit.jupiter.api.Test;
+
+import org.apache.xtable.model.CommitsBacklog;
 import org.apache.xtable.model.IncrementalTableChanges;
 import org.apache.xtable.model.InstantsForIncrementalSync;
 import org.apache.xtable.model.OneSnapshot;
 import org.apache.xtable.model.OneTable;
 import org.apache.xtable.model.TableChange;
 import org.apache.xtable.model.schema.SchemaCatalog;
-import org.junit.jupiter.api.Test;
-
-import io.onetable.model.*;
-import org.apache.xtable.model.CommitsBacklog;
 import org.apache.xtable.model.storage.OneDataFile;
 import org.apache.xtable.model.storage.OneDataFilesDiff;
 import org.apache.xtable.model.storage.OneFileGroup;

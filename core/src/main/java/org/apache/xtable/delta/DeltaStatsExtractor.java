@@ -41,13 +41,13 @@ import org.apache.spark.sql.delta.actions.AddFile;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import org.apache.xtable.collectors.CustomCollectors;
 import org.apache.xtable.exception.OneIOException;
 import org.apache.xtable.model.schema.OneField;
 import org.apache.xtable.model.schema.OneSchema;
 import org.apache.xtable.model.schema.OneType;
 import org.apache.xtable.model.stat.ColumnStat;
 import org.apache.xtable.model.stat.Range;
-import org.apache.xtable.collectors.CustomCollectors;
 
 /**
  * DeltaStatsExtractor extracts column stats and also responsible for their serialization leveraging
@@ -129,7 +129,8 @@ public class DeltaStatsExtractor {
           insertValueAtPath(
               jsonObject,
               pathParts,
-              DeltaValueConverter.convertToDeltaColumnStatValue(valueExtractor.apply(columnStat), field.getSchema()));
+              DeltaValueConverter.convertToDeltaColumnStatValue(
+                  valueExtractor.apply(columnStat), field.getSchema()));
         });
     return jsonObject;
   }

@@ -35,6 +35,7 @@ import org.apache.avro.LogicalType;
 import org.apache.avro.LogicalTypes;
 import org.apache.avro.Schema;
 
+import org.apache.xtable.collectors.CustomCollectors;
 import org.apache.xtable.exception.SchemaExtractorException;
 import org.apache.xtable.exception.UnsupportedSchemaTypeException;
 import org.apache.xtable.hudi.idtracking.IdTracker;
@@ -42,7 +43,6 @@ import org.apache.xtable.hudi.idtracking.models.IdMapping;
 import org.apache.xtable.model.schema.OneField;
 import org.apache.xtable.model.schema.OneSchema;
 import org.apache.xtable.model.schema.OneType;
-import org.apache.xtable.collectors.CustomCollectors;
 import org.apache.xtable.schema.SchemaUtils;
 
 /**
@@ -199,7 +199,8 @@ public class AvroSchemaConverter {
         OneSchema elementSchema =
             toOneSchema(
                 schema.getElementType(),
-                SchemaUtils.getFullyQualifiedPath(parentPath, OneField.Constants.ARRAY_ELEMENT_FIELD_NAME),
+                SchemaUtils.getFullyQualifiedPath(
+                    parentPath, OneField.Constants.ARRAY_ELEMENT_FIELD_NAME),
                 getChildIdMap(elementMapping));
         OneField elementField =
             OneField.builder()
@@ -221,7 +222,8 @@ public class AvroSchemaConverter {
         OneSchema valueSchema =
             toOneSchema(
                 schema.getValueType(),
-                SchemaUtils.getFullyQualifiedPath(parentPath, OneField.Constants.MAP_VALUE_FIELD_NAME),
+                SchemaUtils.getFullyQualifiedPath(
+                    parentPath, OneField.Constants.MAP_VALUE_FIELD_NAME),
                 getChildIdMap(valueMapping));
         OneField valueField =
             OneField.builder()
